@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى حلا ✨ | من أحمد بكل حب</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        roseGold: '#E8B4B8',
+                        deepRose: '#EC4899',
+                        luxuryGold: '#FBBF24',
+                        nightSky: '#090A10',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #060711;
+            --bg-secondary: #130f26;
+            --text-primary: #ffffff;
+            --text-secondary: #fbcfe8;
+            --accent-rose: #f43f5e;
+            --accent-gold: #fbbf24;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.14);
+        }
+
+        body.theme-dawn {
+            --bg-primary: #2a0818;
+            --bg-secondary: #4a122a;
+            --text-primary: #fff5f7;
+            --text-secondary: #fed7e2;
+            --accent-rose: #fb7185;
+            --accent-gold: #fde047;
+            --glass-bg: rgba(255, 228, 235, 0.09);
+            --glass-border: rgba(255, 192, 203, 0.25);
+        }
+
+        body.theme-royal {
+            --bg-primary: #0c0918;
+            --bg-secondary: #22163b;
+            --text-primary: #fffbeb;
+            --text-secondary: #fde68a;
+            --accent-rose: #e11d48;
+            --accent-gold: #f59e0b;
+            --glass-bg: rgba(251, 191, 36, 0.06);
+            --glass-border: rgba(251, 191, 36, 0.25);
+        }
+
+        * {
+            scroll-behavior: smooth;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 15%, var(--bg-secondary), var(--bg-primary) 82%);
+            color: var(--text-primary);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            transition: background 0.9s ease;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(244, 63, 94, 0.5);
+            box-shadow: 0 14px 42px 0 rgba(244, 63, 94, 0.22);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 22px rgba(244, 63, 94, 0.65), 0 0 45px rgba(251, 191, 36, 0.35);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff1f2 0%, #fda4af 45%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3D Flip Card */
+        .perspective-1000 { perspective: 1000px; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.5rem;
+        }
+        .flip-card-back { transform: rotateY(180deg); }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.16); }
+            30% { transform: scale(0.95); }
+            45% { transform: scale(1.1); }
+        }
+        .animate-heartbeat { animation: heartbeat 2s infinite; }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1.5deg); }
+        }
+        .animate-float { animation: floatSlow 5s ease-in-out infinite; }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 18px rgba(244, 63, 94, 0.5), 0 0 32px rgba(251, 191, 36, 0.3); }
+            50% { box-shadow: 0 0 32px rgba(244, 63, 94, 0.9), 0 0 65px rgba(251, 191, 36, 0.6); }
+        }
+        .btn-magic { animation: pulseGlow 3s infinite; }
+
+        /* Equalizer Bars */
+        .eq-bar {
+            width: 3px;
+            background: #fbbf24;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+        .playing .eq-bar:nth-child(1) { animation: eqAnim 0.6s infinite alternate; }
+        .playing .eq-bar:nth-child(2) { animation: eqAnim 0.4s infinite alternate 0.2s; }
+        .playing .eq-bar:nth-child(3) { animation: eqAnim 0.7s infinite alternate 0.1s; }
+        @keyframes eqAnim {
+            0% { height: 4px; }
+            100% { height: 16px; }
+        }
+
+        /* Interactive Rose Garden */
+        .rose-petal-btn {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .rose-petal-btn:hover {
+            transform: translateY(-8px) scale(1.06);
+        }
+        .rose-petal-btn.bloomed {
+            border-color: #fbbf24;
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.28), rgba(251, 191, 36, 0.2));
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #070812; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #f43f5e, #fbbf24); border-radius: 10px; }
+
+        #halaSkyCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: pointer;
+        }
+
+        #signaturePad {
+            touch-action: none;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body class="relative selection:bg-rose-500 selection:text-white">
+
+    <!-- Custom Song Audio Element (Linked to your song) -->
+    <audio id="customSongAudio" src="vidssave.com شمسين _ عيون الناس تحسد كل حبيبين _ بطيء 48KBPS.mp3" loop preload="auto"></audio>
+    <input type="file" id="songFileInput" accept="audio/*" class="hidden" onchange="handleCustomSongUpload(event)">
+
+    <!-- Background Interactive Star & Heart Canvas -->
+    <canvas id="bgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- 1. ROYAL HOLD-TO-UNLOCK ENTRANCE OVERLAY -->
+    <div id="entranceOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 bg-[#060711]/95 backdrop-blur-2xl transition-all duration-1000">
+        <div class="relative max-w-md w-full glass-card rounded-3xl p-8 md:p-10 text-center border border-amber-300/30 animate-float">
+            <div class="text-amber-400 text-3xl mb-2">
+                <i class="fa-solid fa-crown animate-bounce"></i>
+            </div>
+
+            <!-- Hold-to-Unlock Circular Progress Seal -->
+            <div class="relative mx-auto w-36 h-36 mb-6 flex items-center justify-center">
+                <svg class="w-36 h-36 -rotate-90 transform" viewBox="0 0 140 140">
+                    <circle cx="70" cy="70" r="62" stroke="rgba(255,255,255,0.1)" stroke-width="5" fill="none" />
+                    <circle id="unlockRing" cx="70" cy="70" r="62" stroke="url(#unlockGrad)" stroke-width="5" fill="none"
+                        stroke-dasharray="389.5" stroke-dashoffset="389.5" stroke-linecap="round" />
+                    <defs>
+                        <linearGradient id="unlockGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f43f5e" />
+                            <stop offset="100%" stop-color="#fbbf24" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <div id="heartLockBtn"
+                    onmousedown="startUnlockHold(event)" onmouseup="cancelUnlockHold()" onmouseleave="cancelUnlockHold()"
+                    ontouchstart="startUnlockHold(event)" ontouchend="cancelUnlockHold()"
+                    class="absolute w-24 h-24 rounded-full bg-gradient-to-br from-rose-500 via-pink-600 to-amber-500 flex flex-col items-center justify-center shadow-2xl border-2 border-amber-200/70 animate-heartbeat cursor-pointer active:scale-95 transition">
+                    <i class="fa-solid fa-heart text-3xl text-white drop-shadow-lg"></i>
+                    <span class="text-[11px] font-amiri text-amber-100 mt-0.5 font-bold">ح ♥ أ</span>
+                </div>
+            </div>
+
+            <p class="text-rose-300 font-tajawal text-xs tracking-widest uppercase mb-1">عالم خاص ومغلق بنبض الحب</p>
+            <h1 class="font-amiri text-4xl md:text-5xl font-bold gold-gradient-text mb-3 leading-tight">
+                إلى أميرتي حلا..
+            </h1>
+            <p class="text-gray-300 font-tajawal text-sm md:text-base mb-6 leading-relaxed">
+                لأنكِ استثناء هذا الكون، صنعتُ لكِ هذا الفضاء ليكون شاهداً على حبي لكِ.
+                <br>
+                <span class="text-amber-300 font-semibold mt-1 inline-block">— حبيبكِ أحمد ♥</span>
+            </p>
+
+            <p id="holdInstruction" class="text-xs text-amber-200/90 mb-4 animate-pulse">
+                <i class="fa-solid fa-fingerprint ml-1"></i>
+                اضغطي مطولاً على القلب (أو اضغطي الزر بالأسفل) لفتح عالمكِ
+            </p>
+
+            <button onclick="enterExperience()" class="btn-magic w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 text-white font-bold text-base shadow-xl hover:scale-[1.03] active:scale-95 transition-all flex items-center justify-center gap-2">
+                <span>افتحي عالمكِ الخاص</span>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- TOP FLOATING NAVIGATION & CONTROLS -->
+    <header class="fixed top-4 inset-x-4 z-40 max-w-6xl mx-auto">
+        <nav class="glass-card rounded-2xl px-4 py-3 flex items-center justify-between border border-white/15">
+            <!-- Brand -->
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-amber-500 flex items-center justify-center shadow-lg">
+                    <span class="font-amiri font-bold text-xl text-white">ح</span>
+                </div>
+                <div>
+                    <h2 class="font-bold text-sm md:text-base text-white flex items-center gap-1.5">
+                        <span>أحمد</span>
+                        <i class="fa-solid fa-heart text-rose-500 text-xs animate-heartbeat"></i>
+                        <span>حلا</span>
+                    </h2>
+                    <p class="text-[11px] text-rose-300/80 hidden sm:block">قصة حب لا تنتهي</p>
+                </div>
+            </div>
+
+            <!-- Quick Links (Desktop) -->
+            <div class="hidden lg:flex items-center gap-5 text-sm font-tajawal text-pink-100/90">
+                <a href="#hero" class="hover:text-amber-300 transition">البداية</a>
+                <a href="#royalLetter" class="hover:text-amber-300 transition">الرسالة الملكية</a>
+                <a href="#roseGarden" class="hover:text-amber-300 transition">حديقة الورد</a>
+                <a href="#whyHala" class="hover:text-amber-300 transition">لماذا حلا؟</a>
+                <a href="#openWhen" class="hover:text-amber-300 transition">مظاريف الحب</a>
+                <a href="#skyMap" class="hover:text-amber-300 transition">سماء حلا</a>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-2">
+                <!-- Upload Custom Song -->
+                <button onclick="document.getElementById('songFileInput').click()" title="اختيار أغنية من جهازك (MP3)" class="px-2.5 h-10 rounded-xl glass-card flex items-center gap-1.5 text-xs font-semibold text-rose-200 hover:text-amber-300 transition">
+                    <i class="fa-solid fa-folder-open text-amber-400"></i>
+                    <span class="hidden sm:inline">أغنيتنا</span>
+                </button>
+                <!-- Play/Pause Song -->
+                <button id="musicBtn" onclick="toggleAudioPlayback()" title="تشغيل/إيقاف الأغنية" class="px-3 h-10 rounded-xl glass-card flex items-center gap-2 text-rose-300 hover:text-amber-300 transition">
+                    <i id="musicIcon" class="fa-solid fa-music"></i>
+                    <div id="eqBars" class="flex items-end gap-0.5 h-4">
+                        <span class="eq-bar h-1.5"></span>
+                        <span class="eq-bar h-2.5"></span>
+                        <span class="eq-bar h-1.5"></span>
+                    </div>
+                </button>
+                <!-- Theme Switch -->
+                <button onclick="cycleTheme()" title="تغيير جو السماء" class="px-3 h-10 rounded-xl glass-card flex items-center gap-2 text-xs font-semibold text-amber-200 hover:text-white transition">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    <span id="themeText" class="hidden sm:inline">إشراقة الورد</span>
+                </button>
+                <!-- Instant Heart Shower -->
+                <button onclick="triggerHeartShower(25)" title="نثر القلوب" class="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-400/40 flex items-center justify-center text-rose-400 hover:bg-rose-500 hover:text-white transition">
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 pt-28 pb-24 space-y-24 md:space-y-32">
+
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="min-h-[75vh] flex flex-col items-center justify-center text-center relative py-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-amber-300/30 text-amber-200 text-xs md:text-sm mb-6 animate-float">
+                <i class="fa-solid fa-star text-amber-400"></i>
+                <span>إهداء خاص من أحمد إلى أميرته حلا</span>
+                <i class="fa-solid fa-star text-amber-400"></i>
+            </div>
+
+            <h1 class="font-amiri text-5xl sm:text-7xl md:text-8xl font-bold gold-gradient-text glow-text mb-6 leading-tight">
+                حلا.. يا أجمل أقداري
+            </h1>
+
+            <!-- Dynamic Typewriter Box -->
+            <div class="h-20 sm:h-16 flex items-center justify-center max-w-2xl mx-auto px-4 mb-6">
+                <p class="font-tajawal text-lg sm:text-2xl text-pink-100/95 leading-relaxed">
+                    <span id="typewriterText"></span>
+                    <span class="inline-block w-0.5 h-6 bg-amber-400 animate-pulse align-middle mr-1"></span>
+                </p>
+            </div>
+
+            <!-- Custom Song Mini Player Banner -->
+            <div class="w-full max-w-lg mx-auto mb-8 glass-card rounded-2xl px-4 py-3 border border-amber-300/25 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 text-right overflow-hidden">
+                    <button onclick="toggleAudioPlayback()" class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 text-white flex items-center justify-center shrink-0 shadow-md hover:scale-105 transition">
+                        <i id="playerPlayIcon" class="fa-solid fa-play text-sm"></i>
+                    </button>
+                    <div class="truncate">
+                        <p id="currentSongTitle" class="text-xs sm:text-sm font-bold text-amber-200 truncate">شمسين - عيون الناس تحسد كل حبيبين (بطيء) 🎶</p>
+                        <p id="currentSongSub" class="text-[11px] text-pink-200/75">أغنيتنا الخاصة.. اضغطي لتشغيلها أو اختاري ملفاً من جهازك</p>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('songFileInput').click()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-rose-500/30 border border-white/15 text-xs text-white font-semibold shrink-0 transition">
+                    تغيير الأغنية
+                </button>
+            </div>
+
+            <!-- Interactive Hero Centerpiece -->
+            <div class="relative my-4 group cursor-pointer" onclick="triggerHeartShower(30)">
+                <div class="absolute -inset-6 bg-gradient-to-r from-rose-500 via-fuchsia-500 to-amber-500 rounded-full blur-2xl opacity-40 group-hover:opacity-75 transition duration-700"></div>
+                <div class="relative glass-card px-8 py-6 rounded-3xl border border-rose-300/30 flex flex-col sm:flex-row items-center gap-6 max-w-xl mx-auto">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center text-4xl shadow-lg shrink-0 animate-heartbeat">
+                        👑
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <h3 class="text-xl font-bold text-amber-200 mb-1">أنتِ استثناء هذا العالم</h3>
+                        <p class="text-sm text-gray-200 font-tajawal leading-relaxed">
+                            بين ملايين الوجوه، وحدكِ من سرق قلبي وطمأن روحي. كل نبضة في صدري تنطق باسمكِ يا <span class="text-rose-400 font-bold">حلا</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="#royalLetter" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold shadow-lg hover:scale-105 transition flex items-center gap-2">
+                    <span>اقرئي رسالتي لكِ</span>
+                    <i class="fa-solid fa-scroll"></i>
+                </a>
+                <a href="#skyMap" class="px-7 py-3.5 rounded-2xl glass-card text-pink-100 font-semibold hover:border-amber-300/60 transition flex items-center gap-2">
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <span>اسمكِ في السماء</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3. ROYAL WAX-SEALED LETTER -->
+        <section id="royalLetter" class="scroll-mt-24">
+            <div class="max-w-3xl mx-auto glass-card rounded-3xl p-7 sm:p-12 border border-amber-300/30 relative overflow-hidden">
+                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+
+                <div class="text-center mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-400/20">
+                        مكتوب بماء الذهب ✒️
+                    </span>
+                    <h2 class="font-amiri text-3xl sm:text-5xl font-bold gold-gradient-text mt-3">
+                        رسالة من قلب أحمد إلى حلا
+                    </h2>
+                </div>
+
+                <!-- Wax Seal Button -->
+                <div class="flex justify-center mb-6">
+                    <button onclick="revealRoyalLetter()" class="group relative w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 via-yellow-600 to-amber-700 flex items-center justify-center shadow-2xl border-2 border-amber-200 hover:scale-110 transition">
+                        <span class="font-amiri text-2xl font-bold text-amber-950">ح ♥ أ</span>
+                        <span class="absolute -bottom-6 text-[11px] text-amber-200 whitespace-nowrap">اضغطي لكسر الختم</span>
+                    </button>
+                </div>
+
+                <div id="royalLetterBox" class="mt-8 p-6 sm:p-8 rounded-2xl bg-black/30 border border-amber-200/15 text-right">
+                    <p id="royalLetterContent" class="font-amiri text-xl sm:text-2xl text-amber-50 leading-loose whitespace-pre-line min-h-[150px]">
+                        اضغطي على الختم الذهبي في الأعلى لتظهر لكِ رسالتي الخاصة...
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-amber-300 font-amiri text-xl">
+                        <span>إلى الأبد ♥</span>
+                        <span>حبيبكِ أحمد</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. INTERACTIVE ROSE GARDEN FOR HALA -->
+        <section id="roseGarden" class="scroll-mt-24">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-rose-300/25 relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-rose-300 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-400/20">
+                        حديقة حلا السحرية 🌹
+                    </span>
+                    <h2 class="font-amiri text-3xl sm:text-5xl font-bold text-white mt-3 mb-2">
+                        باقة ورد لا تذبل لعيونكِ
+                    </h2>
+                    <p class="text-pink-200/80 font-tajawal text-sm sm:text-base">
+                        اختاري أي وردة من الباقة لتتفتح وتبوح لكِ بما في قلبي
+                    </p>
+                </div>
+
+                <!-- 5 Interactive Roses -->
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 max-w-4xl mx-auto mb-8">
+                    <button onclick="bloomRose(0, this)" class="rose-petal-btn glass-card rounded-2xl p-5 text-center border border-white/10">
+                        <div class="text-4xl mb-2">🌹</div>
+                        <div class="text-sm font-bold text-rose-200">وردة العشق</div>
+                    </button>
+                    <button onclick="bloomRose(1, this)" class="rose-petal-btn glass-card rounded-2xl p-5 text-center border border-white/10">
+                        <div class="text-4xl mb-2">🌷</div>
+                        <div class="text-sm font-bold text-pink-200">وردة الحنان</div>
+                    </button>
+                    <button onclick="bloomRose(2, this)" class="rose-petal-btn glass-card rounded-2xl p-5 text-center border border-white/10">
+                        <div class="text-4xl mb-2">🌺</div>
+                        <div class="text-sm font-bold text-amber-200">وردة الجمال</div>
+                    </button>
+                    <button onclick="bloomRose(3, this)" class="rose-petal-btn glass-card rounded-2xl p-5 text-center border border-white/10">
+                        <div class="text-4xl mb-2">🌸</div>
+                        <div class="text-sm font-bold text-fuchsia-200">وردة الأمان</div>
+                    </button>
+                    <button onclick="bloomRose(4, this)" class="rose-petal-btn col-span-2 sm:col-span-1 glass-card rounded-2xl p-5 text-center border border-amber-300/30">
+                        <div class="text-4xl mb-2">💐</div>
+                        <div class="text-sm font-bold text-amber-300">الباقة الملكية</div>
+                    </button>
+                </div>
+
+                <!-- Rose Message Display -->
+                <div id="roseMessageDisplay" class="max-w-2xl mx-auto rounded-2xl p-6 bg-gradient-to-r from-rose-950/70 via-purple-950/60 to-rose-950/70 border border-rose-400/30 text-center">
+                    <p id="roseText" class="font-amiri text-xl sm:text-2xl text-pink-100 leading-relaxed">
+                        "كل وردة في هذه الدنيا تغار من رقتكِ وجمالكِ يا حلا.. المسي أي وردة في الأعلى ✨"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE "WHY HALA?" 3D FLIP CARDS -->
+        <section id="whyHala" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-rose-300 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-400/20">
+                    أسرار قلبي 💖
+                </span>
+                <h2 class="font-amiri text-4xl sm:text-5xl font-bold gold-gradient-text mt-3 mb-3">
+                    لماذا أنتِ يا حلا؟
+                </h2>
+                <p class="text-pink-100/80 font-tajawal text-sm sm:text-base">
+                    اضغطي على البطاقات لتكتشفي بعضاً من الأسباب التي تجعلني أقع في حبكِ كل يوم من جديد
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-rose-500/20 border border-rose-400/40 flex items-center justify-center text-3xl text-rose-400 mb-4">
+                                <i class="fa-solid fa-face-smile-beam"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">سحر ابتسامتكِ</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "ضحكتكِ يا حلا هي الموسيقى الوحيدة القادرة على أن تنسيني تعب العالم كله في لحظة واحدة."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-3xl text-amber-300 mb-4">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">وطني في عينيكِ</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "في عينيكِ أرى وطني وأماني وسلامي.. كلما نظرتُ إليهما أدركتُ أنني امتلكتُ الدنيا وما فيها."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-pink-500/20 border border-pink-400/40 flex items-center justify-center text-3xl text-pink-300 mb-4">
+                                <i class="fa-solid fa-feather-pointed"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">نقاء روحكِ</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "روحكِ النقية وطيبة قلبكِ لا تشبه أحداً.. أنتِ ملاكٌ أرسله الله ليزهر عمري بالخير والجمال."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-400/40 flex items-center justify-center text-3xl text-purple-300 mb-4">
+                                <i class="fa-solid fa-wand-sparkles"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">تأثير وجودكِ</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "معكِ يصبح المستحيل ممكناً، وتتحول اللحظات العادية إلى ذكريات سحرية لا تُنسى أبداً."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-red-500/20 border border-red-400/40 flex items-center justify-center text-3xl text-red-400 mb-4">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">دفء حنانكِ</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "اهتمامكِ وحنانكِ يحيط بي كأجمل معطف دافئ في ليالي الشتاء.. كلامكِ دائماً يرمم قلبي."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card p-6 flex flex-col items-center justify-center text-center border border-rose-300/20">
+                            <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-3xl text-amber-400 mb-4">
+                                <i class="fa-solid fa-gem"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">لأنكِ ببساطة.. حلا</h3>
+                            <p class="text-xs text-amber-300 flex items-center gap-1 mt-2">
+                                <span>اضغطي لفتح الرسالة</span>
+                                <i class="fa-solid fa-hand-pointer"></i>
+                            </p>
+                        </div>
+                        <div class="flip-card-back glass-card p-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-rose-900/80 to-amber-900/60 border border-amber-300/50">
+                            <i class="fa-solid fa-quote-right text-amber-400/50 text-2xl mb-2"></i>
+                            <p class="font-tajawal text-base sm:text-lg text-white leading-relaxed">
+                                "أحبكِ بكل تفاصيلكِ الصغيرة، بعفويتكِ، بدلالكِ، وباسمكِ الذي يحلي أيامي.. أنتِ حلا روحي."
+                            </p>
+                            <span class="text-xs text-amber-300 mt-3 font-semibold">— أحمد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. OPEN WHEN ROYAL ENVELOPES -->
+        <section id="openWhen" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-400/20">
+                    مظاريف مختومة بالشمع ✉️
+                </span>
+                <h2 class="font-amiri text-3xl sm:text-5xl font-bold text-white mt-3 mb-2">
+                    افتحي المظروف عندما...
+                </h2>
+                <p class="text-pink-200/80 font-tajawal text-sm sm:text-base">
+                    رسائل مخبأة لكِ لتفتحيها في اللحظة المناسبة
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div onclick="openRoyalEnvelope(0)" class="glass-card rounded-2xl p-6 text-center cursor-pointer border border-rose-300/20 hover:-translate-y-2 transition group">
+                    <div class="w-14 h-14 rounded-full bg-rose-500/20 border border-rose-400/40 flex items-center justify-center mx-auto mb-4 text-2xl text-rose-400 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">عندما تشتاقين لي</h3>
+                    <p class="text-xs text-amber-300">اضغطي لفض الختم</p>
+                </div>
+
+                <div onclick="openRoyalEnvelope(1)" class="glass-card rounded-2xl p-6 text-center cursor-pointer border border-rose-300/20 hover:-translate-y-2 transition group">
+                    <div class="w-14 h-14 rounded-full bg-amber-500/20 border border-amber-400/40 flex items-center justify-center mx-auto mb-4 text-2xl text-amber-300 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-moon"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">قبل أن تغمضي عينيكِ</h3>
+                    <p class="text-xs text-amber-300">اضغطي لفض الختم</p>
+                </div>
+
+                <div onclick="openRoyalEnvelope(2)" class="glass-card rounded-2xl p-6 text-center cursor-pointer border border-rose-300/20 hover:-translate-y-2 transition group">
+                    <div class="w-14 h-14 rounded-full bg-pink-500/20 border border-pink-400/40 flex items-center justify-center mx-auto mb-4 text-2xl text-pink-300 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">عندما تتساءلين عن مكانتكِ</h3>
+                    <p class="text-xs text-amber-300">اضغطي لفض الختم</p>
+                </div>
+
+                <div onclick="openRoyalEnvelope(3)" class="glass-card rounded-2xl p-6 text-center cursor-pointer border border-rose-300/20 hover:-translate-y-2 transition group">
+                    <div class="w-14 h-14 rounded-full bg-purple-500/20 border border-purple-400/40 flex items-center justify-center mx-auto mb-4 text-2xl text-purple-300 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-1">رسالة لمستقبلنا معاً</h3>
+                    <p class="text-xs text-amber-300">اضغطي لفض الختم</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. STAR MAP / CONSTELLATION OF HALA -->
+        <section id="skyMap" class="scroll-mt-24">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-indigo-400/25 relative overflow-hidden">
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-300 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-400/20">
+                        كوكبة اسمكِ في سمائي 🌌
+                    </span>
+                    <h2 class="font-amiri text-3xl sm:text-5xl font-bold gold-gradient-text mt-3 mb-2">
+                        سماء حلا الخاصة
+                    </h2>
+                    <p class="text-pink-100/80 font-tajawal text-sm sm:text-base">
+                        شهاب ذهبي يرسم اسمكِ في كبد السماء.. اختاري طريقة العرض أو أطلقي شهب الأمنيات
+                    </p>
+                </div>
+
+                <!-- Interactive High-Precision Sky Canvas -->
+                <div dir="ltr" class="relative w-full max-w-4xl mx-auto h-80 sm:h-[420px] rounded-2xl bg-[#04050c] border border-amber-300/25 overflow-hidden shadow-2xl">
+                    <canvas id="halaSkyCanvas" onclick="spawnShootingStar()"></canvas>
+
+                    <div dir="rtl" id="starQuoteBanner" class="absolute bottom-3 inset-x-3 glass-card rounded-xl px-4 py-2.5 text-center text-xs sm:text-sm text-amber-200 border border-amber-400/30 pointer-events-none">
+                        ✨ اسمكِ يضيء كأجمل كوكبة في سمائي يا حلا ✨
+                    </div>
+                </div>
+
+                <!-- Sky Mode Switchers -->
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                    <button onclick="setSkyMode('arabic')" id="btnSkyArabic" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold text-xs sm:text-sm shadow-lg hover:scale-105 transition flex items-center gap-2">
+                        <i class="fa-solid fa-sparkles"></i>
+                        <span>اسم (حَــلا ♥) بالنجوم</span>
+                    </button>
+                    <button onclick="setSkyMode('english')" id="btnSkyEnglish" class="px-5 py-2.5 rounded-2xl glass-card border border-amber-300/30 text-amber-200 font-bold text-xs sm:text-sm hover:bg-white/10 transition flex items-center gap-2">
+                        <i class="fa-solid fa-star"></i>
+                        <span>كوكبة حروف (H A L A)</span>
+                    </button>
+                    <button onclick="setSkyMode('both')" id="btnSkyBoth" class="px-5 py-2.5 rounded-2xl glass-card border border-rose-300/30 text-rose-200 font-bold text-xs sm:text-sm hover:bg-white/10 transition flex items-center gap-2">
+                        <i class="fa-solid fa-crown"></i>
+                        <span>اللوحة الملكية الكاملة</span>
+                    </button>
+                    <button onclick="spawnShootingStar()" class="px-5 py-2.5 rounded-2xl bg-indigo-500/25 border border-indigo-400/40 text-indigo-200 font-bold text-xs sm:text-sm hover:bg-indigo-500/40 transition flex items-center gap-2">
+                        <span>🌠 أطلقي شهاب أمنية</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. MEMORY & WISHES CAPSULE -->
+        <section id="wishesSection" class="scroll-mt-24">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-rose-300/20">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-rose-300 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-400/20">
+                        دفترنا الخاص 📖
+                    </span>
+                    <h2 class="font-amiri text-3xl sm:text-5xl font-bold text-white mt-3 mb-2">
+                        كبسولة الأمنيات والذكريات
+                    </h2>
+                    <p class="text-pink-200/80 font-tajawal text-sm sm:text-base">
+                        مساحة خاصة بنا لتدوين أجمل لحظاتنا وأحلامنا القادمة معاً
+                    </p>
+                </div>
+
+                <div class="max-w-xl mx-auto mb-10 flex flex-col sm:flex-row gap-3">
+                    <input id="newWishInput" type="text" placeholder="اكتبي أمنية جميلة أو ذكرى تحبينها يا حلا..." class="flex-1 rounded-2xl bg-black/40 border border-white/20 px-4 py-3.5 text-white placeholder-gray-400 focus:outline-none focus:border-rose-400 font-tajawal text-sm sm:text-base">
+                    <button onclick="addNewWish()" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-bold shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2 shrink-0">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>إضافة للكبسولة</span>
+                    </button>
+                </div>
+
+                <div id="wishesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- 9. INTERACTIVE LOVE METER & ROYAL CERTIFICATE WITH SIGNATURE PAD -->
+        <section class="scroll-mt-24 text-center">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-amber-300/30 relative overflow-hidden">
+                <div class="max-w-2xl mx-auto">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center mx-auto mb-5 text-3xl shadow-xl animate-heartbeat">
+                        💝
+                    </div>
+                    <h2 class="font-amiri text-3xl sm:text-5xl font-bold gold-gradient-text mb-4">
+                        مقياس حب أحمد لـ حلا اليوم
+                    </h2>
+                    <p class="text-pink-100/85 font-tajawal text-base sm:text-lg mb-8">
+                        هل تتساءلين كم يحبكِ أحمد في هذه اللحظة؟ اضغطي على الزر بالأسفل لاختبار مقياس الحب!
+                    </p>
+
+                    <div class="w-full h-7 bg-black/50 rounded-full overflow-hidden p-1 border border-white/15 mb-4">
+                        <div id="loveMeterBar" class="h-full w-0 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 transition-all duration-1000 flex items-center justify-end px-3 text-xs font-bold text-white"></div>
+                    </div>
+                    <div id="loveMeterLabel" class="text-amber-300 font-bold text-lg h-8 mb-6"></div>
+
+                    <button onclick="runLoveMeter()" class="btn-magic px-8 py-4 rounded-2xl bg-gradient-to-r from-rose-600 via-pink-500 to-amber-500 text-white font-bold text-lg shadow-2xl hover:scale-105 active:scale-95 transition inline-flex items-center gap-3">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>اضغطي لقياس نسبة حبي لكِ اليوم</span>
+                    </button>
+
+                    <!-- Royal Certificate with Interactive Signature Pad -->
+                    <div id="finalSurpriseLetter" class="hidden mt-10 p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-rose-950/95 via-purple-950/90 to-amber-950/85 border-2 border-amber-300/60 text-right shadow-2xl transition-all">
+                        <div class="flex items-center justify-between border-b border-amber-200/20 pb-4 mb-5">
+                            <div>
+                                <h3 class="font-amiri text-2xl sm:text-4xl font-bold text-amber-300">وثيقة العهد الأبدي</h3>
+                                <p class="text-xs text-rose-300">مختومة بقلب أحمد إلى أميرته حلا</p>
+                            </div>
+                            <i class="fa-solid fa-crown text-4xl text-amber-400 animate-bounce"></i>
+                        </div>
+
+                        <p class="font-tajawal text-base sm:text-lg text-pink-50 leading-loose mb-6">
+                            حبيبتي <span class="text-amber-300 font-bold">حلا</span>،<br>
+                            لو كان بيدي أن أهديكِ عمري كله لوضعته بين يديكِ دون تردد. أنتِ أجمل صدفة، وأصدق شعور، وأعظم نعمة في حياتي. أعدكِ أن أكون دائماً سندكِ، ومأمنكِ، وضحكتكِ، والحبيب الذي لا يمل من حبكِ أبداً.
+                        </p>
+
+                        <!-- Interactive Signature Area for Hala -->
+                        <div class="my-6 p-4 rounded-2xl bg-black/40 border border-amber-300/30 text-center">
+                            <p class="text-xs sm:text-sm text-amber-200 mb-2 font-semibold">
+                                ✍️ وقّعي بإصبعكِ أو بالماوس هنا لاعتماد العهد الأبدي يا حلا:
+                            </p>
+                            <canvas id="signaturePad" width="320" height="120" class="mx-auto bg-white/5 rounded-xl border border-dashed border-amber-300/40 max-w-full"></canvas>
+                            <div class="mt-3 flex justify-center gap-3">
+                                <button onclick="clearSignature()" class="px-4 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-gray-200 transition">
+                                    مسح التوقيع
+                                </button>
+                                <button onclick="confirmSignature()" class="px-5 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 text-xs font-bold text-white shadow-md hover:scale-105 transition">
+                                    اعتماد العهد ♥
+                                </button>
+                            </div>
+                            <p id="signatureConfirmedMsg" class="hidden mt-3 text-sm font-bold text-amber-300 animate-pulse">
+                                ✨ تم توثيق العهد الأبدي بين أحمد وحلا بنجاح! ✨
+                            </p>
+                        </div>
+
+                        <div class="text-left font-amiri text-2xl text-amber-300 font-bold">
+                            حبيبكِ دائماً وأبداً، أحمد ♥
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ENVELOPE MODAL -->
+    <div id="envelopeModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-lg w-full rounded-3xl p-7 sm:p-9 border-2 border-amber-300/50 text-center relative animate-float">
+            <button onclick="closeEnvelopeModal()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/10 hover:bg-rose-500 text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center mx-auto mb-4 text-2xl text-white shadow-lg">
+                <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h3 id="modalEnvelopeTitle" class="font-amiri text-2xl sm:text-3xl font-bold text-amber-300 mb-4"></h3>
+            <p id="modalEnvelopeBody" class="font-tajawal text-base sm:text-lg text-pink-50 leading-loose mb-6"></p>
+            <span class="font-amiri text-xl text-rose-300 font-bold">— حبيبكِ أحمد ♥</span>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 text-center py-8 border-t border-white/10 text-xs sm:text-sm text-pink-200/60 font-tajawal">
+        <p>صُنع بكل حب وشغف من <span class="text-rose-400 font-bold">أحمد</span> خصيصاً لعيون <span class="text-amber-300 font-bold">حلا</span> ✨ ♥</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* ==========================================
+           1. HOLD-TO-UNLOCK ENTRANCE & CUSTOM AUDIO PLAYER
+           ========================================== */
+        const customAudio = document.getElementById('customSongAudio');
+        let isPlayingMusic = false;
+        let holdInterval = null;
+        let holdProgress = 0;
+
+        function startUnlockHold(e) {
+            if (e) e.preventDefault();
+            const ring = document.getElementById('unlockRing');
+            const totalDash = 389.5;
+            holdInterval = setInterval(() => {
+                holdProgress += 5;
+                const offset = totalDash - (totalDash * holdProgress) / 100;
+                ring.style.strokeDashoffset = offset;
+                if (holdProgress >= 100) {
+                    clearInterval(holdInterval);
+                    enterExperience();
+                }
+            }, 35);
+        }
+
+        function cancelUnlockHold() {
+            clearInterval(holdInterval);
+            if (holdProgress < 100) {
+                holdProgress = 0;
+                document.getElementById('unlockRing').style.strokeDashoffset = 389.5;
+            }
+        }
+
+        function enterExperience() {
+            const overlay = document.getElementById('entranceOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+            setTimeout(() => overlay.style.display = 'none', 900);
+
+            triggerHeartShower(40);
+            startTypewriter();
+            setTimeout(initHalaSky, 300);
+
+            // Auto-play your custom song on unlock
+            if (!isPlayingMusic) {
+                playCustomAudio();
+            }
+        }
+
+        function handleCustomSongUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const fileURL = URL.createObjectURL(file);
+            customAudio.src = fileURL;
+            const cleanName = file.name.replace(/\.[^/.]+$/, "");
+            document.getElementById('currentSongTitle').textContent = `${cleanName} 🎶`;
+            document.getElementById('currentSongSub').textContent = "تم اختيار أغنيتكِ الخاصة بنجاح ♥";
+            playCustomAudio();
+            triggerHeartShower(20);
+        }
+
+        function playCustomAudio() {
+            customAudio.play().then(() => {
+                isPlayingMusic = true;
+                updateAudioUI(true);
+            }).catch(() => {
+                isPlayingMusic = false;
+                updateAudioUI(false);
+            });
+        }
+
+        function toggleAudioPlayback() {
+            if (isPlayingMusic) {
+                customAudio.pause();
+                isPlayingMusic = false;
+                updateAudioUI(false);
+            } else {
+                playCustomAudio();
+            }
+        }
+
+        function updateAudioUI(playing) {
+            const eq = document.getElementById('eqBars');
+            const playIcon = document.getElementById('playerPlayIcon');
+            if (playing) {
+                eq.classList.add('playing');
+                playIcon.className = 'fa-solid fa-pause text-sm';
+            } else {
+                eq.classList.remove('playing');
+                playIcon.className = 'fa-solid fa-play text-sm';
+            }
+        }
+
+        /* ==========================================
+           2. 3-MODE LUXURY THEME SWITCHER
+           ========================================== */
+        let themeIndex = 0;
+        const themes = [
+            { cls: '', icon: 'fa-solid fa-moon text-amber-200', label: 'إشراقة الورد' },
+            { cls: 'theme-dawn', icon: 'fa-solid fa-sun text-amber-300', label: 'العهد الملكي' },
+            { cls: 'theme-royal', icon: 'fa-solid fa-crown text-amber-400', label: 'ليلة النجوم' }
+        ];
+
+        function cycleTheme() {
+            themeIndex = (themeIndex + 1) % themes.length;
+            document.body.className = `relative selection:bg-rose-500 selection:text-white ${themes[themeIndex].cls}`;
+            document.getElementById('themeIcon').className = themes[themeIndex].icon;
+            document.getElementById('themeText').textContent = themes[themeIndex].label;
+        }
+
+        /* ==========================================
+           3. HERO TYPEWRITER EFFECT
+           ========================================== */
+        const romanticPhrases = [
+            "كل يوم معكِ يا حلا هو عمر جديد يزهر في قلبي 🌸",
+            "أنتِ النجمة الوحيدة التي أضاءت عتمة سمائي ✨",
+            "حلا.. اسمكِ وحده يكفي ليبتسم قلبي وتطمئن روحي ♥",
+            "أحبكِ فوق ما يصف الكلام، وأكثر مما تتخيلين دائماً 👑",
+            "وجودكِ بجانبي هو أجمل هدية منحني الله إياها 💝"
+        ];
+        let phraseIdx = 0, charIdx = 0, isDeleting = false, typewriterStarted = false;
+
+        function startTypewriter() {
+            if (typewriterStarted) return;
+            typewriterStarted = true;
+            typeLoop();
+        }
+
+        function typeLoop() {
+            const currentPhrase = romanticPhrases[phraseIdx];
+            const el = document.getElementById('typewriterText');
+
+            if (!isDeleting) {
+                el.textContent = currentPhrase.substring(0, charIdx + 1);
+                charIdx++;
+                if (charIdx === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeLoop, 2800);
+                    return;
+                }
+            } else {
+                el.textContent = currentPhrase.substring(0, charIdx - 1);
+                charIdx--;
+                if (charIdx === 0) {
+                    isDeleting = false;
+                    phraseIdx = (phraseIdx + 1) % romanticPhrases.length;
+                }
+            }
+            setTimeout(typeLoop, isDeleting ? 35 : 70);
+        }
+
+        /* ==========================================
+           4. ROYAL LETTER REVEAL
+           ========================================== */
+        const royalLetterFullText = `أميرتي وحبيبتي حلا،
+كلما نظرتُ إليكِ أدركتُ أن الله قد اختصر كل جمال هذا الكون في قلبكِ وعيونكِ.
+وجودكِ في حياتي ليس مجرد صدفة، بل هو أجمل قدر كتب لي السعادة والسكينة.
+أعدكِ أن أكون لكِ دائماً السند والأمان، والقلب الذي يحبكِ في كل يوم أكثر من الأمس.`;
+        let letterTimer = null;
+
+        function revealRoyalLetter() {
+            const box = document.getElementById('royalLetterContent');
+            box.textContent = '';
+            let i = 0;
+            clearInterval(letterTimer);
+            triggerHeartShower(20);
+            letterTimer = setInterval(() => {
+                if (i < royalLetterFullText.length) {
+                    box.textContent += royalLetterFullText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(letterTimer);
+                }
+            }, 35);
+        }
+
+        /* ==========================================
+           5. INTERACTIVE ROSE GARDEN
+           ========================================== */
+        const roseMessages = [
+            "وردة العشق 🌹: أهديكِ إياها لأن حبكِ هو أجمل قصة كُتبت في عمري يا حلا.",
+            "وردة الحنان 🌷: تشبه رقة قلبكِ ودفء صوتكِ الذي يطمئن روحي دائماً.",
+            "وردة الجمال 🌺: تذبل كل الورود أمام سحر عينيكِ وجمال ابتسامتكِ.",
+            "وردة الأمان 🌸: معكِ فقط عرفتُ معنى أن يكون الإنسان في وطنه ومأمنه.",
+            "الباقة الملكية 💐: لو قطفتُ لكِ ورود الأرض كلها، لما وفت حقكِ يا أميرة قلبي!"
+        ];
+
+        function bloomRose(index, btnElement) {
+            document.querySelectorAll('.rose-petal-btn').forEach(b => b.classList.remove('bloomed'));
+            btnElement.classList.add('bloomed');
+            document.getElementById('roseText').textContent = `"${roseMessages[index]}"`;
+            triggerHeartShower(16);
+        }
+
+        /* ==========================================
+           6. OPEN WHEN ROYAL ENVELOPES
+           ========================================== */
+        const envelopesData = [
+            {
+                title: "عندما تشتاقين لي 💭",
+                body: "اعرفي يا حلا إنه بنفس اللحظة اللي بتشتاقيلي فيها، بكون أنا سرحان بعيونك وبفكر فيكِ.. المسافات عمرها ما بتبعد قلوبنا عن بعض، فأنتِ أقرب إليّ من نبضي."
+            },
+            {
+                title: "قبل أن تغمضي عينيكِ 🌙",
+                body: "نامي مطمئنة البال يا أميرتي.. هناك قلب يدعو الله لكِ بالراحة والسعادة في كل ليلة، ويحلم باليوم الذي يجمعنا تحت سقف واحد للأبد."
+            },
+            {
+                title: "عندما تتساءلين عن مكانتكِ 👑",
+                body: "أنتِ لستِ جزءاً من حياتي يا حلا، بل أنتِ حياتي كلها.. أنتِ الملكة المتوجة على عرش قلبي بلا منازع اليوم وغداً وإلى الأبد."
+            },
+            {
+                title: "رسالة لمستقبلنا معاً ♾️",
+                body: "كل حلم أرسمه في مخيلتي أنتِ بطلته الوحيدة.. سنضحك معاً، ونكبر معاً، ونحقق كل أمنياتنا يداً بيد بإذن الله."
+            }
+        ];
+
+        function openRoyalEnvelope(idx) {
+            document.getElementById('modalEnvelopeTitle').textContent = envelopesData[idx].title;
+            document.getElementById('modalEnvelopeBody').textContent = envelopesData[idx].body;
+            const modal = document.getElementById('envelopeModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            triggerHeartShower(22);
+        }
+
+        function closeEnvelopeModal() {
+            const modal = document.getElementById('envelopeModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        /* ==========================================
+           7. PRECISION HALA STAR CONSTELLATION SKY
+           ========================================== */
+        const skyCanvas = document.getElementById('halaSkyCanvas');
+        const skyCtx = skyCanvas.getContext('2d');
+        let skyMode = 'arabic';
+        let skyAnimationId = null;
+        let drawProgress = 0;
+        let skyBgStars = [];
+        let shootingStars = [];
+
+        function initHalaSky() {
+            const rect = skyCanvas.parentElement.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            skyCanvas.width = rect.width * dpr;
+            skyCanvas.height = rect.height * dpr;
+            skyCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            skyBgStars = [];
+            for (let i = 0; i < 95; i++) {
+                skyBgStars.push({
+                    x: Math.random() * rect.width,
+                    y: Math.random() * rect.height,
+                    r: Math.random() * 1.6 + 0.4,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+            drawProgress = 0;
+            if (skyAnimationId) cancelAnimationFrame(skyAnimationId);
+            animateHalaSky();
+        }
+
+        window.addEventListener('resize', () => {
+            if (document.getElementById('entranceOverlay').style.display === 'none') {
+                initHalaSky();
+            }
+        });
+
+        function setSkyMode(mode) {
+            skyMode = mode;
+            drawProgress = 0;
+            spawnShootingStar();
+            triggerHeartShower(12);
+
+            const banner = document.getElementById('starQuoteBanner');
+            if (mode === 'arabic') {
+                banner.textContent = "✨ كوكبة (حَــلا ♥) تضيء في قلب السماء بماء الذهب ✨";
+            } else if (mode === 'english') {
+                banner.textContent = "🌟 حروف (H A L A) مرسومة بالنجوم الساطعة والذهب 🌟";
+            } else {
+                banner.textContent = "👑 اللوحة الملكية الكاملة: اسم حلا يزين السماء بالعربية والإنجليزية 👑";
+            }
+        }
+
+        function spawnShootingStar() {
+            const rect = skyCanvas.parentElement.getBoundingClientRect();
+            shootingStars.push({
+                x: Math.random() * rect.width * 0.7 + rect.width * 0.2,
+                y: Math.random() * rect.height * 0.3,
+                vx: -(Math.random() * 5 + 4),
+                vy: Math.random() * 3 + 2,
+                len: 85,
+                alpha: 1
+            });
+        }
+
+        function getHalaConstellationStrokes(w, h) {
+            const strokes = [];
+
+            if (skyMode === 'english' || skyMode === 'both') {
+                const topY = skyMode === 'both' ? h * 0.56 : h * 0.26;
+                const botY = skyMode === 'both' ? h * 0.80 : h * 0.70;
+                const midY = (topY + botY) / 2;
+
+                // H
+                strokes.push([[w * 0.14, topY], [w * 0.14, botY]]);
+                strokes.push([[w * 0.14, midY], [w * 0.24, midY]]);
+                strokes.push([[w * 0.24, topY], [w * 0.24, botY]]);
+                // A
+                strokes.push([[w * 0.31, botY], [w * 0.365, topY], [w * 0.42, botY]]);
+                strokes.push([[w * 0.33, midY + (botY - topY) * 0.1], [w * 0.40, midY + (botY - topY) * 0.1]]);
+                // L
+                strokes.push([[w * 0.49, topY], [w * 0.49, botY], [w * 0.59, botY]]);
+                // A
+                strokes.push([[w * 0.65, botY], [w * 0.705, topY], [w * 0.76, botY]]);
+                strokes.push([[w * 0.67, midY + (botY - topY) * 0.1], [w * 0.74, midY + (botY - topY) * 0.1]]);
+                // Star Heart Accent
+                strokes.push([
+                    [w * 0.85, midY + (botY - topY) * 0.25],
+                    [w * 0.81, midY - (botY - topY) * 0.1],
+                    [w * 0.83, midY - (botY - topY) * 0.25],
+                    [w * 0.85, midY - (botY - topY) * 0.1],
+                    [w * 0.87, midY - (botY - topY) * 0.25],
+                    [w * 0.89, midY - (botY - topY) * 0.1],
+                    [w * 0.85, midY + (botY - topY) * 0.25]
+                ]);
+            }
+
+            if (skyMode === 'arabic' || skyMode === 'both') {
+                const cx = w * 0.5;
+                const cy = skyMode === 'both' ? h * 0.28 : h * 0.46;
+                const scaleX = skyMode === 'both' ? w * 0.22 : w * 0.30;
+                const scaleY = skyMode === 'both' ? h * 0.20 : h * 0.34;
+                const heartPts = [];
+                for (let t = 0; t <= Math.PI * 2 + 0.2; t += 0.35) {
+                    const hx = 16 * Math.pow(Math.sin(t), 3);
+                    const hy = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+                    heartPts.push([cx + (hx / 16) * scaleX, cy + (hy / 16) * scaleY]);
+                }
+                strokes.push(heartPts);
+            }
+
+            return strokes;
+        }
+
+        function animateHalaSky() {
+            const rect = skyCanvas.parentElement.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+
+            const grad = skyCtx.createRadialGradient(w * 0.5, h * 0.45, 20, w * 0.5, h * 0.5, w * 0.75);
+            grad.addColorStop(0, '#161133');
+            grad.addColorStop(0.6, '#09081a');
+            grad.addColorStop(1, '#04050c');
+            skyCtx.fillStyle = grad;
+            skyCtx.fillRect(0, 0, w, h);
+
+            const time = Date.now() * 0.002;
+            skyBgStars.forEach(s => {
+                const alpha = 0.35 + 0.65 * Math.abs(Math.sin(time + s.phase));
+                skyCtx.beginPath();
+                skyCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                skyCtx.fillStyle = `rgba(255, 245, 250, ${alpha})`;
+                skyCtx.fill();
+            });
+
+            drawProgress = Math.min(1, drawProgress + 0.015);
+            const strokes = getHalaConstellationStrokes(w, h);
+
+            strokes.forEach(pts => {
+                const visibleCount = Math.max(1, Math.floor(pts.length * drawProgress));
+
+                skyCtx.save();
+                skyCtx.beginPath();
+                for (let i = 0; i < visibleCount; i++) {
+                    const [x, y] = pts[i];
+                    if (i === 0) skyCtx.moveTo(x, y);
+                    else skyCtx.lineTo(x, y);
+                }
+                skyCtx.strokeStyle = 'rgba(251, 191, 36, 0.88)';
+                skyCtx.lineWidth = 2.6;
+                skyCtx.shadowBlur = 14;
+                skyCtx.shadowColor = '#f43f5e';
+                skyCtx.stroke();
+                skyCtx.restore();
+
+                for (let i = 0; i < visibleCount; i++) {
+                    const [x, y] = pts[i];
+                    const pulse = 3.8 + Math.sin(time * 2 + i) * 1.1;
+
+                    skyCtx.save();
+                    skyCtx.beginPath();
+                    skyCtx.arc(x, y, pulse, 0, Math.PI * 2);
+                    skyCtx.fillStyle = '#fffbeb';
+                    skyCtx.shadowBlur = 18;
+                    skyCtx.shadowColor = '#fbbf24';
+                    skyCtx.fill();
+
+                    skyCtx.strokeStyle = 'rgba(251, 191, 36, 0.65)';
+                    skyCtx.lineWidth = 1;
+                    skyCtx.beginPath();
+                    skyCtx.moveTo(x - 8, y);
+                    skyCtx.lineTo(x + 8, y);
+                    skyCtx.moveTo(x, y - 8);
+                    skyCtx.lineTo(x, y + 8);
+                    skyCtx.stroke();
+                    skyCtx.restore();
+                }
+            });
+
+            if (skyMode === 'arabic' || skyMode === 'both') {
+                const textY = skyMode === 'both' ? h * 0.30 : h * 0.49;
+                const fontSize = skyMode === 'both' ? Math.min(w * 0.08, 42) : Math.min(w * 0.13, 68);
+                skyCtx.save();
+                skyCtx.globalAlpha = drawProgress;
+                skyCtx.font = `bold ${fontSize}px 'Amiri', serif`;
+                skyCtx.textAlign = 'center';
+                skyCtx.textBaseline = 'middle';
+                skyCtx.fillStyle = '#fde68a';
+                skyCtx.shadowBlur = 24;
+                skyCtx.shadowColor = '#f43f5e';
+                skyCtx.fillText('حَــلا ♥', w * 0.5, textY);
+                skyCtx.restore();
+            }
+
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const st = shootingStars[i];
+                st.x += st.vx;
+                st.y += st.vy;
+                st.alpha -= 0.018;
+
+                skyCtx.save();
+                const tailGrad = skyCtx.createLinearGradient(st.x, st.y, st.x - st.vx * 12, st.y - st.vy * 12);
+                tailGrad.addColorStop(0, `rgba(255, 251, 235, ${Math.max(0, st.alpha)})`);
+                tailGrad.addColorStop(1, 'rgba(251, 191, 36, 0)');
+                skyCtx.strokeStyle = tailGrad;
+                skyCtx.lineWidth = 2.5;
+                skyCtx.beginPath();
+                skyCtx.moveTo(st.x, st.y);
+                skyCtx.lineTo(st.x - st.vx * 12, st.y - st.vy * 12);
+                skyCtx.stroke();
+                skyCtx.restore();
+
+                if (st.alpha <= 0) shootingStars.splice(i, 1);
+            }
+
+            skyAnimationId = requestAnimationFrame(animateHalaSky);
+        }
+
+        /* ==========================================
+           8. WISHES & MEMORIES CAPSULE
+           ========================================== */
+        const defaultWishes = [
+            { text: "أول مرة خفق فيها قلبي لكِ وأدركتُ أنكِ نصيبي الجميل ♥", tag: "ذكرى خالدة" },
+            { text: "كل ضحكة دافئة تقاسمناها معاً وجعلت العالم يبدو أجمل ✨", tag: "لحظة سعادة" },
+            { text: "أحلامنا القادمة التي سنحققها يداً بيد إن شاء الله 💍", tag: "أمنية المستقبل" }
+        ];
+        let wishesList = JSON.parse(localStorage.getItem('ahmed_hala_wishes')) || defaultWishes;
+
+        function renderWishes() {
+            const grid = document.getElementById('wishesGrid');
+            grid.innerHTML = '';
+            wishesList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl p-5 border border-white/10 flex flex-col justify-between relative group';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-400/30 font-semibold">${item.tag}</span>
+                            <button onclick="deleteWish(${index})" title="حذف" class="text-gray-400 hover:text-rose-400 text-xs opacity-60 group-hover:opacity-100 transition"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <p class="font-tajawal text-white text-sm sm:text-base leading-relaxed">${item.text}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-amber-300/80">
+                        <span>أحمد & حلا</span>
+                        <i class="fa-solid fa-heart text-rose-400"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function addNewWish() {
+            const input = document.getElementById('newWishInput');
+            const val = input.value.trim();
+            if (!val) return;
+            wishesList.unshift({ text: val, tag: "أمنية جديدة ✨" });
+            localStorage.setItem('ahmed_hala_wishes', JSON.stringify(wishesList));
+            input.value = '';
+            renderWishes();
+            triggerHeartShower(15);
+        }
+
+        function deleteWish(idx) {
+            wishesList.splice(idx, 1);
+            localStorage.setItem('ahmed_hala_wishes', JSON.stringify(wishesList));
+            renderWishes();
+        }
+        renderWishes();
+
+        /* ==========================================
+           9. LOVE METER & SIGNATURE PAD
+           ========================================== */
+        function runLoveMeter() {
+            const bar = document.getElementById('loveMeterBar');
+            const label = document.getElementById('loveMeterLabel');
+            const letter = document.getElementById('finalSurpriseLetter');
+
+            bar.style.width = '35%';
+            bar.textContent = '35%';
+            label.textContent = 'جاري قياس نبضات قلب أحمد... 💓';
+
+            setTimeout(() => {
+                bar.style.width = '85%';
+                bar.textContent = '85%';
+                label.textContent = 'الحب يتجاوز المقاييس الطبيعية... 🔥';
+            }, 900);
+
+            setTimeout(() => {
+                bar.style.width = '100%';
+                bar.textContent = '∞%';
+                label.innerHTML = '💥 <span class="text-rose-400">∞% حب لا نهائي لـ حلا!</span> تفوق على كل المقاييس!';
+                letter.classList.remove('hidden');
+                triggerHeartShower(55);
+            }, 1900);
+        }
+
+        const signCanvas = document.getElementById('signaturePad');
+        const signCtx = signCanvas.getContext('2d');
+        let isSigning = false;
+
+        function getSignCoords(e) {
+            const rect = signCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        signCanvas.addEventListener('mousedown', (e) => {
+            isSigning = true;
+            const pos = getSignCoords(e);
+            signCtx.beginPath();
+            signCtx.moveTo(pos.x, pos.y);
+        });
+        signCanvas.addEventListener('mousemove', (e) => {
+            if (!isSigning) return;
+            const pos = getSignCoords(e);
+            signCtx.lineTo(pos.x, pos.y);
+            signCtx.strokeStyle = '#fbbf24';
+            signCtx.lineWidth = 2.5;
+            signCtx.lineCap = 'round';
+            signCtx.stroke();
+        });
+        window.addEventListener('mouseup', () => isSigning = false);
+
+        signCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isSigning = true;
+            const pos = getSignCoords(e);
+            signCtx.beginPath();
+            signCtx.moveTo(pos.x, pos.y);
+        });
+        signCanvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (!isSigning) return;
+            const pos = getSignCoords(e);
+            signCtx.lineTo(pos.x, pos.y);
+            signCtx.strokeStyle = '#fbbf24';
+            signCtx.lineWidth = 2.5;
+            signCtx.lineCap = 'round';
+            signCtx.stroke();
+        });
+
+        function clearSignature() {
+            signCtx.clearRect(0, 0, signCanvas.width, signCanvas.height);
+            document.getElementById('signatureConfirmedMsg').classList.add('hidden');
+        }
+
+        function confirmSignature() {
+            document.getElementById('signatureConfirmedMsg').classList.remove('hidden');
+            triggerHeartShower(45);
+        }
+
+        /* ==========================================
+           10. BACKGROUND AMBIENT CANVAS
+           ========================================== */
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [], floatingHearts = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 120; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.8 + 0.4,
+                alpha: Math.random(),
+                speed: Math.random() * 0.015 + 0.005
+            });
+        }
+
+        function triggerHeartShower(count = 20) {
+            const emojis = ['❤️', '💖', '✨', '🌸', '👑', '💝'];
+            for (let i = 0; i < count; i++) {
+                floatingHearts.push({
+                    x: Math.random() * canvas.width,
+                    y: canvas.height + Math.random() * 100,
+                    size: Math.random() * 18 + 16,
+                    speedY: Math.random() * 2.5 + 1.5,
+                    speedX: (Math.random() - 0.5) * 1.5,
+                    emoji: emojis[Math.floor(Math.random() * emojis.length)],
+                    alpha: 1
+                });
+            }
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.16) {
+                floatingHearts.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    size: 14,
+                    speedY: 1.2,
+                    speedX: (Math.random() - 0.5) * 1,
+                    emoji: Math.random() > 0.5 ? '✨' : '💕',
+                    alpha: 0.9
+                });
+            }
+        });
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 240, 245, ${s.alpha})`;
+                ctx.fill();
+            });
+
+            for (let i = floatingHearts.length - 1; i >= 0; i--) {
+                const h = floatingHearts[i];
+                h.y -= h.speedY;
+                h.x += h.speedX;
+                h.alpha -= 0.005;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, h.alpha);
+                ctx.font = `${h.size}px sans-serif`;
+                ctx.fillText(h.emoji, h.x, h.y);
+                ctx.restore();
+                if (h.y < -40 || h.alpha <= 0) floatingHearts.splice(i, 1);
+            }
+            requestAnimationFrame(animateCanvas);
+        }
+
+        window.onload = function () {
+            animateCanvas();
+        };
+    </script>
+</body>
+</html>
